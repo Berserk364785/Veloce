@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0D0714" />
+    <title>Veloce — ближе, даже на расстоянии</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <symbol id="i-spark" viewBox="0 0 24 24">
+          <path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z" />
+        </symbol>
+        <symbol id="i-play" viewBox="0 0 24 24">
+          <path d="m9 5 11 7-11 7z" />
+        </symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24">
+          <path d="M8 5v14M16 5v14" />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14" />
+        </symbol>
+        <symbol id="i-link" viewBox="0 0 24 24">
+          <path
+            d="m10 13 4-4M9 16l-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m0 10a4 4 0 0 0 6 0l4-4a4 4 0 0 0-6-6l-1 1"
+          />
+        </symbol>
+        <symbol id="i-users" viewBox="0 0 24 24">
+          <circle cx="9" cy="8" r="3" />
+          <path
+            d="M3 20v-2a6 6 0 0 1 12 0v2m1-15a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 4v2"
+          />
+        </symbol>
+        <symbol id="i-mic" viewBox="0 0 24 24">
+          <rect x="9" y="2" width="6" height="12" rx="3" />
+          <path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8" />
+        </symbol>
+        <symbol id="i-micoff" viewBox="0 0 24 24">
+          <path
+            d="m3 3 18 18M9 9v2a3 3 0 0 0 5 2m1-3V5a3 3 0 0 0-6-1M5 10v2a7 7 0 0 0 12 5m2-6v1M12 19v3m-4 0h8"
+          />
+        </symbol>
+        <symbol id="i-send" viewBox="0 0 24 24">
+          <path d="m22 2-7 20-4-9-9-4zM22 2 11 13" />
+        </symbol>
+        <symbol id="i-full" viewBox="0 0 24 24">
+          <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+        </symbol>
+        <symbol id="i-volume" viewBox="0 0 24 24">
+          <path
+            d="m11 4-6 5H2v6h3l6 5zM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"
+          />
+        </symbol>
+        <symbol id="i-close" viewBox="0 0 24 24">
+          <path d="m6 6 12 12M6 18 18 6" />
+        </symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24">
+          <path d="M4 7h16M4 17h16" />
+          <circle cx="9" cy="7" r="3" />
+          <circle cx="15" cy="17" r="3" />
+        </symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24">
+          <rect x="5" y="10" width="14" height="11" rx="3" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M5 12h14m-6-6 6 6-6 6" />
+        </symbol>
+        <symbol id="i-screen" viewBox="0 0 24 24">
+          <rect x="2" y="3" width="20" height="14" rx="3" />
+          <path d="M8 21h8m-4-4v4" />
+        </symbol>
+        <symbol id="i-help" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 5m0 3h.01" />
+        </symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24">
+          <path
+            d="M5 3h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-9l-6 4v-4H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+          />
+          <path d="M7 8h10M7 12h6" />
+        </symbol>
+        <symbol id="i-prev" viewBox="0 0 24 24">
+          <path d="M5 5v14m14-14L8 12l11 7z" />
+        </symbol>
+        <symbol id="i-next" viewBox="0 0 24 24">
+          <path d="M19 5v14M5 5l11 7-11 7z" />
+        </symbol>
+        <symbol id="i-camera" viewBox="0 0 24 24">
+          <rect x="2" y="5" width="14" height="14" rx="3" />
+          <path d="m16 9 6-4v14l-6-4" />
+        </symbol>
+        <symbol id="i-search" viewBox="0 0 24 24">
+          <circle cx="10" cy="10" r="6" />
+          <path d="m15 15 6 6" />
+        </symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24">
+          <path
+            d="M20 4a5 5 0 0 0-8 2 5 5 0 0 0-8-2c-5 5 1 10 8 16 7-6 13-11 8-16z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+    <div class="app-shell">
+      <aside class="rail" aria-label="Навигация">
+        <a class="monogram" href="/" aria-label="Veloce, новая комната"
+          >v<span>·</span></a
+        >
+        <div class="rail-middle">
+          <button
+            class="icon-button active"
+            id="room-nav"
+            aria-label="Кинозал"
+            title="Кинозал"
+          >
+            <svg><use href="#i-screen" /></svg></button
+          ><button
+            class="icon-button"
+            id="members-nav"
+            aria-label="Участники"
+            title="Участники"
+          >
+            <svg><use href="#i-users" /></svg>
+          </button>
+        </div>
+        <button
+          class="icon-button"
+          id="help-button"
+          aria-label="Как это работает"
+          title="Как это работает"
+        >
+          <svg><use href="#i-help" /></svg></button
+        ><button
+          class="avatar self-avatar"
+          id="profile-button"
+          aria-label="Изменить имя"
+        >
+          В
+        </button>
+      </aside>
+      <div class="workspace">
+        <header class="topbar">
+          <a href="/" class="wordmark"
+            >veloce<span
+              ><svg aria-hidden="true"><use href="#i-spark" /></svg></span
+          ></a>
+          <div class="tagline">Ближе, даже на расстоянии</div>
+          <div class="top-actions">
+            <span class="connection" id="connection"><i></i>Подключение…</span
+            ><button class="button invite-button" id="invite">
+              <svg><use href="#i-link" /></svg><span>Пригласить</span>
+            </button>
+          </div>
+        </header>
+        <main>
+          <section
+            class="source-toolbar glass"
+            aria-label="Источники просмотра"
+          >
+            <div class="mode-tabs" role="group" aria-label="Режим просмотра">
+              <button data-mode="anime">Аниме</button
+              ><button data-mode="movies">Фильмы / сериалы</button
+              ><button data-mode="link" class="selected" aria-pressed="true">
+                Ссылка / YouTube</button
+              ><button data-mode="screen">
+                <svg><use href="#i-screen" /></svg>Трансляция экрана
+              </button>
+            </div>
+            <form id="search-form" class="smart-search">
+              <svg><use href="#i-search" /></svg
+              ><label for="search-input" class="sr-only"
+                >Поиск по каталогу</label
+              ><input
+                id="search-input"
+                placeholder="Выберите «Аниме» или «Фильмы» для поиска"
+                maxlength="120"
+                disabled
+              /><button type="submit" aria-label="Найти">
+                <svg><use href="#i-arrow" /></svg>
+              </button>
+            </form>
+          </section>
+          <section id="catalog-panel" class="catalog-panel glass" hidden>
+            <div class="catalog-heading">
+              <h2 id="catalog-title">Выберите, что посмотрим</h2>
+              <button
+                id="close-catalog"
+                class="icon-button"
+                aria-label="Скрыть результаты"
+              >
+                <svg><use href="#i-close" /></svg>
+              </button>
+            </div>
+            <p id="catalog-status" role="status"></p>
+            <div id="catalog-results" class="catalog-results"></div>
+            <button id="more-results" class="button subtle" hidden>
+              Следующая страница
+            </button>
+          </section>
+          <div id="mode-notice" class="notice" hidden></div>
+          <div class="room-heading">
+            <div>
+              <div class="eyebrow">
+                <svg><use href="#i-lock" /></svg>ЛИЧНАЯ КОМНАТА
+                <span class="tiny-dot">·</span
+                ><span id="room-code">ВАШ ВЕЧЕР</span>
+              </div>
+              <h1>Расстояние — не помеха<span>.</span></h1>
+              <p>Один фильм. Общие эмоции. Ваш маленький кинозал.</p>
+            </div>
+            <button class="button subtle" id="new-room">
+              <svg><use href="#i-plus" /></svg>Новая комната
+            </button>
+          </div>
+          <div id="demo-banner" class="notice" hidden>
+            Демо интерфейса · действия локальные, другие устройства не
+            подключены.
+          </div>
+          <div class="cinema-grid">
+            <section class="cinema" aria-label="Кинозал">
+              <div class="player-card glass" id="player-card">
+                <div class="player-top">
+                  <span class="room-label"
+                    ><span class="status-dot"></span>ВЕЧЕР ВМЕСТЕ</span
+                  ><span id="host-label" class="muted">Вы — ведущий</span>
+                </div>
+                <div class="screen" id="screen">
+                  <div id="player-mount"></div>
+                  <div class="screen-empty" id="screen-empty">
+                    <div class="screen-kicker">ТВОЙ ЧЕЛОВЕК. ВАШЕ КИНО.</div>
+                    <div class="empty-symbol">
+                      <svg><use href="#i-play" /></svg>
+                    </div>
+                    <h2>Лучше, когда вместе.</h2>
+                    <p>
+                      Добавьте видео, устройтесь поудобнее.<br />Всё остальное
+                      подождёт.
+                    </p>
+                    <button class="button primary" id="empty-add">
+                      <svg><use href="#i-plus" /></svg>Выбрать видео
+                    </button>
+                    <div class="source-marks">
+                      <span><b class="yt-mark">▶</b>YouTube</span
+                      ><span><b class="vk-mark">vk</b>VK Видео</span
+                      ><span><b class="rt-mark">R</b>Rutube</span>
+                    </div>
+                  </div>
+                  <div
+                    class="seek-feedback"
+                    id="seek-feedback"
+                    aria-hidden="true"
+                    hidden
+                  ></div>
+                  <div
+                    class="reaction-layer"
+                    id="reaction-layer"
+                    aria-hidden="true"
+                  ></div>
+                </div>
+                <div
+                  class="player-error"
+                  id="player-error"
+                  role="status"
+                  hidden
+                ></div>
+                <div class="playback-controls">
+                  <input
+                    type="range"
+                    id="seek"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                    aria-label="Позиция воспроизведения"
+                    disabled
+                  />
+                  <div class="control-row">
+                    <button
+                      class="icon-button"
+                      id="play"
+                      aria-label="Воспроизвести"
+                      disabled
+                    >
+                      <svg><use href="#i-play" /></svg></button
+                    ><button
+                      class="seek-step"
+                      id="seek-back"
+                      aria-label="Назад на 10 секунд"
+                      title="Назад на 10 секунд"
+                      disabled
+                    >
+                      <svg aria-hidden="true" viewBox="0 0 32 32">
+                        <path d="M8 10a11 11 0 1 1-3 10M8 10V3M8 10H1" /></svg
+                      ><b>10</b></button
+                    ><button
+                      class="seek-step"
+                      id="seek-forward"
+                      aria-label="Вперёд на 10 секунд"
+                      title="Вперёд на 10 секунд"
+                      disabled
+                    >
+                      <svg aria-hidden="true" viewBox="0 0 32 32">
+                        <path
+                          d="M24 10a11 11 0 1 0 3 10M24 10V3M24 10h7"
+                        /></svg
+                      ><b>10</b></button
+                    ><span class="timecode" id="timecode"
+                      >00:00 <span>/ 00:00</span></span
+                    >
+                    <div class="volume-control">
+                      <svg><use href="#i-volume" /></svg
+                      ><input
+                        id="volume"
+                        type="range"
+                        min="0"
+                        max="1"
+                        value="0.7"
+                        step="0.05"
+                        aria-label="Громкость видео"
+                      />
+                    </div>
+                    <span class="sync-state" id="sync-state">Ожидаем видео</span
+                    ><button
+                      class="icon-button chat-toggle-button"
+                      id="chat-toggle"
+                      data-chat-toggle
+                      aria-label="Открыть чат и участников"
+                      aria-expanded="false"
+                      aria-controls="social-panel"
+                      title="Чат и участники"
+                    >
+                      <svg><use href="#i-chat" /></svg
+                      ><span class="unread-dot" data-unread hidden
+                        >0</span
+                      ></button
+                    ><button
+                      class="icon-button"
+                      id="fullscreen"
+                      aria-label="Полный экран"
+                    >
+                      <svg><use href="#i-full" /></svg>
+                    </button>
+                  </div>
+                </div>
+                <nav
+                  class="series-navigation"
+                  id="series-navigation"
+                  aria-label="Переключение серий"
+                  hidden
+                >
+                  <button
+                    id="previous-episode"
+                    class="episode-arrow"
+                    disabled
+                    aria-label="Предыдущая серия"
+                  >
+                    <svg><use href="#i-prev" /></svg
+                    ><span>Предыдущая</span></button
+                  ><span id="episode-position" class="episode-position"
+                    >Выберите аниме из поиска</span
+                  ><button
+                    id="next-episode"
+                    class="episode-arrow"
+                    disabled
+                    aria-label="Следующая серия"
+                  >
+                    <span>Следующая</span><svg><use href="#i-next" /></svg>
+                  </button>
+                </nav>
+              </div>
+              <div class="video-details">
+                <div>
+                  <div class="eyebrow" id="provider-label">
+                    НАЧНИТЕ С ЧЕГО-ТО ХОРОШЕГО
+                  </div>
+                  <h2 id="video-title">Что посмотрим сегодня?</h2>
+                  <p id="video-subtitle">
+                    Ролик, концерт или любимое шоу — просто вставьте ссылку.
+                  </p>
+                </div>
+                <button class="button subtle" id="add-video">
+                  <svg><use href="#i-plus" /></svg><span>Добавить видео</span>
+                </button>
+              </div>
+              <section class="episode-picker glass" id="episode-picker" hidden>
+                <div class="picker-grid">
+                  <label>Озвучка<select id="translation-select"></select></label
+                  ><label>Сезон<select id="season-select"></select></label
+                  ><label>Серия<select id="episode-select"></select></label
+                  ><label>Качество<select id="quality-select"></select></label
+                  ><button class="button primary" id="watch-episode">
+                    Смотреть
+                  </button>
+                </div>
+                <p id="episode-notice"></p>
+              </section>
+              <div class="local-state" id="local-state" hidden>
+                <p id="local-status">
+                  Выберите тот же файл на этом устройстве.
+                </p>
+                <button class="button primary" id="choose-local-room">
+                  Выбрать файл
+                </button>
+              </div>
+              <div class="below-player">
+                <div class="reactions">
+                  <span>Без лишних слов</span>
+                  <div class="reaction-buttons" aria-label="Быстрые реакции">
+                    <button data-emoji="💜" aria-label="Отправить сердечко">
+                      💜</button
+                    ><button data-emoji="😂" aria-label="Отправить смех">
+                      😂</button
+                    ><button data-emoji="😍" aria-label="Отправить восхищение">
+                      😍</button
+                    ><button data-emoji="🔥" aria-label="Отправить огонь">
+                      🔥</button
+                    ><button
+                      data-emoji="👏"
+                      aria-label="Отправить аплодисменты"
+                    >
+                      👏
+                    </button>
+                  </div>
+                </div>
+                <button class="ambient-toggle" id="ambient" aria-pressed="true">
+                  <span class="toggle-track"></span>Мягкая подсветка
+                </button>
+              </div>
+              <div class="quiet-note">
+                <svg><use href="#i-lock" /></svg
+                ><span
+                  >Только те, у кого есть ссылка. Никаких публичных
+                  комнат.</span
+                >
+              </div>
+            </section>
+            <aside
+              class="social-panel glass"
+              id="social-panel"
+              aria-label="Общение"
+              inert
+            >
+              <div class="social-drawer-head">
+                <div>
+                  <h2>Рядом с вами</h2>
+                  <span>Кино и разговор — на одном экране</span>
+                </div>
+                <button
+                  class="icon-button"
+                  id="close-social"
+                  aria-label="Закрыть чат"
+                >
+                  <svg><use href="#i-close" /></svg>
+                </button>
+              </div>
+              <details class="voice-details" id="voice-details" open>
+                <summary>
+                  Участники и голос <svg><use href="#i-users" /></svg>
+                </summary>
+                <section class="voice-section">
+                  <div class="panel-heading">
+                    <h2>На связи <span id="member-count">1</span></h2>
+                    <span class="live-label"><i></i>LIVE</span>
+                  </div>
+                  <div id="members" class="members"></div>
+                  <button id="voice-button" class="voice-button">
+                    <svg><use href="#i-mic" /></svg
+                    ><span>Подключить голос</span>
+                  </button>
+                  <div class="call-actions">
+                    <button
+                      id="mute-button"
+                      class="icon-button"
+                      aria-label="Выключить микрофон"
+                      title="Микрофон"
+                      disabled
+                    >
+                      <svg><use href="#i-mic" /></svg></button
+                    ><button
+                      id="camera-button"
+                      class="icon-button"
+                      aria-label="Включить камеру"
+                      title="Камера"
+                    >
+                      <svg><use href="#i-camera" /></svg></button
+                    ><button
+                      id="share-button"
+                      class="icon-button"
+                      aria-label="Транслировать экран"
+                      title="Демонстрация экрана"
+                    >
+                      <svg><use href="#i-screen" /></svg></button
+                    ><button
+                      id="profile-inline"
+                      class="icon-button"
+                      aria-label="Изменить имя"
+                      title="Изменить имя"
+                    >
+                      <svg><use href="#i-settings" /></svg>
+                    </button>
+                  </div>
+                  <p class="voice-hint" id="voice-hint">
+                    Говорите так, будто вы рядом
+                  </p>
+                </section>
+              </details>
+              <section class="chat-section">
+                <div class="panel-heading">
+                  <h2>Чат комнаты</h2>
+                  <svg class="small-icon"><use href="#i-heart" /></svg>
+                </div>
+                <div
+                  class="chat-messages"
+                  id="messages"
+                  role="log"
+                  aria-label="Сообщения комнаты"
+                  aria-live="polite"
+                >
+                  <div class="chat-empty" id="chat-empty">
+                    <span
+                      ><svg aria-hidden="true"><use href="#i-spark" /></svg
+                    ></span>
+                    <p>Здесь начинается<br />ваш вечер</p>
+                    <small>Отправьте первое сообщение</small>
+                  </div>
+                </div>
+                <form id="chat-form" class="chat-form">
+                  <label class="sr-only" for="chat-input">Сообщение</label
+                  ><input
+                    id="chat-input"
+                    placeholder="Сказать что-нибудь…"
+                    maxlength="1000"
+                    autocomplete="off"
+                  /><button aria-label="Отправить сообщение">
+                    <svg><use href="#i-send" /></svg>
+                  </button>
+                </form>
+                <div class="chat-footer">
+                  Ваши впечатления — в реальном времени
+                </div>
+              </section>
+            </aside>
+          </div>
+          <footer>
+            <span
+              >veloce
+              <span class="footer-star"
+                ><svg aria-hidden="true"><use href="#i-spark" /></svg></span
+            ></span>
+            <p>Вместе — это место, а не расстояние.</p>
+            <button id="help-footer">О просмотре</button>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <dialog id="video-dialog">
+      <form id="source-form">
+        <div class="dialog-head">
+          <div>
+            <div class="eyebrow">ВАШ СЛЕДУЮЩИЙ КАДР</div>
+            <h2>Что будем смотреть?</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            data-close
+            aria-label="Закрыть"
+          >
+            <svg><use href="#i-close" /></svg>
+          </button>
+        </div>
+        <p>
+          Вставьте ссылку на YouTube, VK Видео, Rutube или прямой поток .m3u8 /
+          .mp4 / .webm.
+        </p>
+        <label for="source-input">Ссылка на видео</label
+        ><textarea
+          id="source-input"
+          placeholder="https://www.youtube.com/watch?v=…"
+          rows="3"
+          maxlength="3000"
+          required
+        ></textarea>
+        <p class="field-note">
+          Для VK также подойдёт код iframe из «Поделиться → Экспортировать».
+          Видеофайлы не копируются. Для прямых потоков источник должен разрешать
+          CORS; защищённые DRM-потоки не поддерживаются.
+        </p>
+        <div id="source-error" class="form-error" role="alert"></div>
+        <div class="provider-tags">
+          <span>YouTube</span><span>VK Видео</span><span>Rutube · beta</span
+          ><span>HLS / MP4 / WebM</span>
+        </div>
+        <button class="button primary wide" type="submit">
+          Добавить в комнату<svg><use href="#i-arrow" /></svg>
+        </button>
+        <div class="or-divider">или без загрузки на сервер</div>
+        <button type="button" class="button subtle wide" id="choose-local">
+          Выбрать локальный файл
+        </button>
+        <p class="field-note">
+          Один и тот же файл нужен каждому участнику. MKV и некоторые
+          аудиокодеки браузер может не поддерживать.
+        </p>
+      </form>
+    </dialog>
+    <dialog id="profile-dialog">
+      <form id="profile-form">
+        <div class="dialog-head">
+          <h2>Как вас называть?</h2>
+          <button
+            type="button"
+            class="icon-button"
+            data-close
+            aria-label="Закрыть"
+          >
+            <svg><use href="#i-close" /></svg>
+          </button>
+        </div>
+        <label for="name-input">Имя в комнате</label
+        ><input
+          id="name-input"
+          maxlength="24"
+          required
+          placeholder="Ваше имя"
+        />
+        <p class="field-note">Имя видно только участникам комнаты.</p>
+        <button class="button primary wide">Сохранить</button>
+      </form>
+    </dialog>
+    <dialog id="help-dialog">
+      <div class="dialog-head">
+        <h2>Маленький гид по вечеру</h2>
+        <button class="icon-button" data-close aria-label="Закрыть">
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </div>
+      <ol class="help-steps">
+        <li>
+          <b>Пригласите своего человека.</b>
+          <p>
+            Кнопка «Пригласить» копирует секретную ссылку комнаты. Не публикуйте
+            её открыто.
+          </p>
+        </li>
+        <li>
+          <b>Добавьте видео по ссылке.</b>
+          <p>
+            Поддерживаются прямые HLS/MP4/WebM, локальные файлы и внешние
+            плееры. Доступ к источнику нужен каждому. Поиск метаданных не
+            предоставляет сами фильмы.
+          </p>
+        </li>
+        <li>
+          <b>Нажмите Play у каждого.</b>
+          <p>
+            Браузер может блокировать запуск со звуком. После первого нажатия
+            включится синхронизация.
+          </p>
+        </li>
+        <li>
+          <b>Один управляет — оба смотрят.</b>
+          <p>
+            Выбор видео и перемотка доступны ведущему. Второй участник может
+            взять управление кнопкой в этом окне.
+          </p>
+        </li>
+        <li>
+          <b>Перематывайте и общайтесь, не теряя кино.</b>
+          <p>
+            Кнопки с числом 10 перематывают на 10 секунд. У прямого потока и
+            локального файла работает двойное нажатие по левому или правому краю
+            видео. Стрелки под плеером переключают серии из списка источника.
+            Кнопка чата открывает сообщения рядом с видео, на телефоне — под
+            закреплённым плеером.
+          </p>
+        </li>
+      </ol>
+      <p class="field-note">
+        Реклама, ограничения доступа и буферизация могут нарушать синхронизацию.
+        Rutube — экспериментальный адаптер. Свечение декоративное, не считывает
+        кадры. Голос, камера и Screen Share требуют HTTPS и иногда TURN-сервера.
+        Передача экрана и системного звука зависит от браузера; мобильные
+        браузеры обычно не умеют начинать Screen Share. PeerJS по умолчанию
+        использует публичный сервер сигналинга, который можно заменить своим.
+        Комната и чат хранятся в памяти и пропадают при перезапуске.
+      </p>
+      <button class="button subtle wide" id="take-host">
+        Взять управление плеером
+      </button>
+    </dialog>
+    <dialog id="invite-dialog">
+      <div class="dialog-head">
+        <h2>Место рядом — для неё</h2>
+        <button class="icon-button" data-close aria-label="Закрыть">
+          <svg><use href="#i-close" /></svg>
+        </button>
+      </div>
+      <p>Скопируйте ссылку и отправьте тому, с кем хотите смотреть.</p>
+      <label for="invite-url">Секретная ссылка</label
+      ><input id="invite-url" readonly /><button
+        class="button primary wide"
+        id="copy-link"
+      >
+        Скопировать ссылку
+      </button>
+      <p class="field-note">
+        Любой обладатель ссылки может войти и взять управление. В комнате до 6
+        человек.
+      </p>
+    </dialog>
+    <button
+      class="chat-fab"
+      id="chat-fab"
+      data-chat-toggle
+      aria-label="Открыть чат и участников"
+      aria-expanded="false"
+      aria-controls="social-panel"
+    >
+      <svg><use href="#i-chat" /></svg><span>Чат</span
+      ><span class="unread-dot" data-unread hidden>0</span>
+    </button>
+    <div class="toast" id="toast" role="status" hidden></div>
+    <input type="file" id="local-file" accept="video/*,.mkv" hidden />
+    <script src="/static/vendor/hls.min.js" defer></script>
+    <script src="/static/vendor/peerjs.min.js" defer></script>
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>

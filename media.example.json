@@ -1,0 +1,14 @@
+{
+  "123456": {
+    "title": "Название вашего фильма / сериала",
+    "translations": [{
+      "id": "original",
+      "name": "Оригинал",
+      "seasons": [{
+        "number": 1,
+        "label": "Сезон 1",
+        "episodes": [{"number": 1, "label": "Серия 1", "url": "https://YOUR-AUTHORIZED-CDN.example/episode-1/master.m3u8", "quality": 1080, "qualities": [720, 1080]}]
+      }]
+    }]
+  }
+}
